@@ -31,4 +31,4 @@ The project isn't actively looking for contributors, however feel free to contac
 
 Concept, Design and Programming by James Leahy.
 
-All cat Photos taken from [CATAAS](https://cataas.com/).
+All cat photos taken from [CATAAS](https://cataas.com/), text taken from [Random Cat Generator](https://www.springhole.net/writing_roleplaying_randomators/catcreator.htm).
