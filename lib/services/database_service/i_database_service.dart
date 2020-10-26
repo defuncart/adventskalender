@@ -5,5 +5,7 @@ abstract class IDatabaseService {
   AdventDay getDay(int day);
 
   /// Initializes the database
-  Future<void> initialize();
+  ///
+  /// [dirPath] is a path to a directory where the db should be saved to
+  Future<void> initialize(String dirPath);
 }

@@ -1,6 +1,8 @@
 import 'package:adventskalender/di_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -75,8 +77,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<bool> _init() async {
+    final dir = await getApplicationDocumentsDirectory();
+    Hive.init(dir.path);
+
     final db = context.read(databaseServiceProvider);
-    await db.initialize();
+    await db.initialize(dir.path);
 
     final _notificationService = context.read(localNotificationServiceProvider);
     await _notificationService.initialize();
