@@ -22,3 +22,5 @@ The project isn't actively looking for contributors, however feel free to contac
 ## Credits
 
 Concept, Design and Programming by James Leahy.
+
+All cat Photos taken from [CATAAS](https://cataas.com/).
