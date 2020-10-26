@@ -1,8 +1,6 @@
 import 'package:adventskalender/di_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -33,16 +31,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 appBar: AppBar(
                   title: Text('Adventskalender'),
                 ),
-                body: Center(
-                  child: ElevatedButton(
-                    child: Text('Trigger Local Notification'),
-                    onPressed: () async => await context.read(localNotificationServiceProvider).scheduleNotification(
-                          id: 0,
-                          title: 'Title',
-                          body: 'Body',
-                          scheduledDate: tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-                        ),
-                  ),
+                body: Stack(
+                  children: [
+                    Center(
+                      child: ElevatedButton(
+                        child: Text('Trigger Local Notification'),
+                        onPressed: () async =>
+                            await context.read(localNotificationServiceProvider).scheduleNotification(
+                                  id: 0,
+                                  title: 'Title',
+                                  body: 'Body',
+                                  scheduledDate:
+                                      context.read(dateTimeServiceProvider).localNow.add(const Duration(seconds: 5)),
+                                ),
+                      ),
+                    ),
+                    Positioned(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(context.read(dateTimeServiceProvider).localNow.toString()),
+                      ),
+                    )
+                  ],
                 ),
               );
             }
@@ -55,8 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<bool> _init() async {
-    tz.initializeTimeZones();
-
     final _notificationService = context.read(localNotificationServiceProvider);
     await _notificationService.initialize();
     await _notificationService.requestPermissions();
