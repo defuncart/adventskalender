@@ -14,8 +14,8 @@ class AdventCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) {
-        final width = (constraints.maxWidth - (_paddingX * _numberColumns - 1)) / _numberColumns;
-        final height = (constraints.maxHeight - (_paddingY * _numberRows - 1)) / _numberRows;
+        final width = (constraints.maxWidth - _paddingX * (_numberColumns - 1)) / _numberColumns;
+        final height = (constraints.maxHeight - _paddingY * (_numberRows - 1)) / _numberRows;
 
         return Wrap(
           spacing: _paddingX,
