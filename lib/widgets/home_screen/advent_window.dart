@@ -18,7 +18,7 @@ class AdventWindow extends StatelessWidget {
     @required this.width,
     @required this.height,
   })  : assert(day != null),
-        assert(day >= 1 && day <= constants.numberDaysAdvent),
+        assert(day >= constants.firstAdventDay && day <= constants.numberDaysAdvent),
         assert(width != null),
         assert(width > 0),
         assert(height != null),
