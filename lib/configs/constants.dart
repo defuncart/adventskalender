@@ -1,0 +1,1 @@
+const numberDaysAdvent = 24;
