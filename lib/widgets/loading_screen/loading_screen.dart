@@ -49,6 +49,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await _notificationService.initialize();
     await _notificationService.requestPermissions();
 
+    final userSettingsService = context.read(userSettingsServiceProvider);
+    await userSettingsService.initialize();
+
+    final openWindowsService = context.read(openedWindowsServiceProvider);
+    await openWindowsService.initialize();
+
     return true;
   }
 }

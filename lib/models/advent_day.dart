@@ -40,8 +40,8 @@ class AdventDayAdapter extends TypeAdapter<AdventDay> {
     return AdventDay(
       title: fields[0] as String,
       description: fields[1] as String,
-      value1: fields[3] as String,
-      value2: fields[2] as String,
+      value1: fields[2] as String,
+      value2: fields[3] as String,
     );
   }
 

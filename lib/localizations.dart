@@ -9,10 +9,20 @@ import 'package:flutter/material.dart';
 class AppLocalizations {
   static String get test => _getText('test');
 
+  static String get homeScreenBeforeAdventLabel =>
+      _getText('homeScreenBeforeAdventLabel');
+
+  static String get homeScreenAfterAdventLabel =>
+      _getText('homeScreenAfterAdventLabel');
+
   static Map<String, String> _localizedValues;
 
   static Map<String, String> _deValues = {
     'test': 'Hallo, Welt!',
+    'homeScreenBeforeAdventLabel':
+        'Advent fängt am 01.12 an.\nBitte komm dann zurück.',
+    'homeScreenAfterAdventLabel':
+        'Advent is schon vorbei.\nBitte komm näschter Advent zurück.',
   };
 
   static Map<String, Map<String, String>> _allValues = {

@@ -16,12 +16,10 @@ class FakeDateTimeService implements IDateTimeService {
   })  : assert(year != null),
         assert(year >= 2020),
         assert(month != null),
-        assert(month == 12),
         assert(day != null),
-        assert(day >= 1 && day <= 24) {
+        assert(day >= 1 && day <= 31) {
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Europe/Berlin'));
-    print(DateTime.now().timeZoneName);
   }
 
   @override

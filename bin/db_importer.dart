@@ -1,14 +1,12 @@
 import 'dart:io';
 
+import 'package:adventskalender/configs/constants.dart';
 import 'package:adventskalender/models/advent_day.dart';
 import 'package:args/args.dart';
 import 'package:hive/hive.dart';
 import 'package:path/path.dart';
 
 void main(List<String> arguments) async {
-  // constants
-  const numberDays = 24;
-
   // cleanup
   if (!await Directory('assets/database').exists()) {
     await Directory('assets/database').create();
@@ -43,10 +41,10 @@ void main(List<String> arguments) async {
 
   // determine if all images are present
   final imageList = await _filesOfTypeInDir('jpeg', dir);
-  if (imageList.length != numberDays) {
-    printError('Exactly $numberDays images are expected.');
+  if (imageList.length != numberDaysAdvent) {
+    printError('Exactly $numberDaysAdvent images are expected.');
   }
-  final expectedFileNames = List.generate(numberDays, (index) => (index + 1).toString());
+  final expectedFileNames = List.generate(numberDaysAdvent, (index) => (index + 1).toString());
   for (final imageFilepath in imageList) {
     final filename = basename(imageFilepath).replaceAll('.jpeg', '');
     if (!expectedFileNames.contains(filename)) {
@@ -67,8 +65,8 @@ void main(List<String> arguments) async {
     printError('No csv db found in ${dir.path}!');
   }
   final csvFileContents = await File(csvFilepaths.first).readAsLines();
-  if (csvFileContents.length != (numberDays + 1)) {
-    printError('CSV file ${csvFilepaths.first} has ${csvFileContents.length} lines, expected ${numberDays + 1}');
+  if (csvFileContents.length != (numberDaysAdvent + 1)) {
+    printError('CSV file ${csvFilepaths.first} has ${csvFileContents.length} lines, expected ${numberDaysAdvent + 1}');
   }
   for (var line = 1; line < csvFileContents.length; line++) {
     final components = csvFileContents[line].split(';');
