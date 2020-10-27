@@ -14,7 +14,7 @@ class FakeOpenedWindowsService implements IOpenedWindowsService {
   List<bool> _days;
 
   FakeOpenedWindowsService({List<FOW> days}) {
-    if (days == null || days.isEmpty || days.length <= 25) {
+    if (days == null || days.isEmpty || days.length > constants.numberDaysAdvent) {
       reset();
     }
 

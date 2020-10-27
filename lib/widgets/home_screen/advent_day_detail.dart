@@ -12,7 +12,7 @@ class AdventDayDetail extends StatelessWidget {
     Key key,
     @required this.day,
   })  : assert(day != null),
-        assert(day >= 1 && day <= constants.numberDaysAdvent),
+        assert(day >= constants.firstAdventDay && day <= constants.numberDaysAdvent),
         super(key: key);
 
   @override

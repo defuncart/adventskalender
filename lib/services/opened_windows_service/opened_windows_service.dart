@@ -35,7 +35,7 @@ class OpenedWindowsService implements IOpenedWindowsService {
 
   Future<void> _ensureDefaultsExist() async {
     if (_box.keys.isEmpty) {
-      for (var i = 1; i <= constants.numberDaysAdvent; i++) {
+      for (var i = constants.firstAdventDay; i <= constants.numberDaysAdvent; i++) {
         await _box.put(i, false);
       }
     }
